@@ -31,9 +31,9 @@
                 ],
 
                 banners: [
-                    { text: 'Everyday Fresh & Clean with Our Products', buttonText: 'Shop Now', color: '#f0e9d7', image: 'onion.png'},
-                    { text: 'Make your Breakfast Healthy and Easy', buttonText: 'Shop Now', color:'#f2e8e9', image: 'juice.png'},
-                    { text: 'The best Organic Products Online', buttonText: 'Shop Now', color: '#e6eaf3', image: 'veggie.png'}
+                    { text: 'Everyday Fresh & Clean with Our Products', color: '#f0e9d7', image: 'onion.png'},
+                    { text: 'Make your Breakfast Healthy and Easy', color:'#f2e8e9', image: 'juice.png'},
+                    { text: 'The best Organic Products Online', color: '#e6eaf3', image: 'veggie.png'}
                 ]
             };
         }
