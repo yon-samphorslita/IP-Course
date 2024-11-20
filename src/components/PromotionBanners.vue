@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         getImagePath(image) {
-            return new URL(`${image}`, import.meta.url).href;
+            return new URL(`../assets/${image}`, import.meta.url).href;
         },
         shopNow(banner) {
                 alert("Let's shop: " + banner.text);
