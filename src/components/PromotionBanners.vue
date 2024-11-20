@@ -1,12 +1,12 @@
 <template>
     <div class="promotion-banners">
-        <div v-for="banner in banners" :key="banner.text" class="banner-item" :style="{backgroundColor: banner.color}">
+        <div v-for="banner in banners" :key="banner.title" class="banner-item" :style="{backgroundColor: banner.color}">
             <div class="banner-content">
-                <p>{{ banner.text }}</p>
-                <button @click="shopNow(banner)">Shop Now
+                <p>{{ banner.title }}</p>
+                <ButtonComponent @click="shopNow(banner)">Shop Now
                     <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 -2 15 15">
                         <path fill="currentColor" d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414"/></svg>
-                </button>
+                </ButtonComponent>
             </div>
             <img :src="getImagePath(banner.image)" :alt="banner.text" />
         </div>
@@ -14,14 +14,19 @@
 </template>
 
 <script>
+import ButtonComponent from './ButtonComponent.vue';
+
 export default {
     name: 'PromotionBanners',
+    components: {
+        ButtonComponent
+    },
     props: {
         banners: Array
     },
     methods: {
         getImagePath(image) {
-            return new URL(`../assets/${image}`, import.meta.url).href;
+            return new URL(`${image}`, import.meta.url).href;
         },
         shopNow(banner) {
                 alert("Let's shop: " + banner.text);
@@ -54,20 +59,6 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-}
-
-button {
-    margin-top: 10px;
-    padding: 5px ;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: medium;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
 }
 
 img {
