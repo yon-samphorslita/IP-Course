@@ -8,6 +8,20 @@ export const useProductStore = defineStore('product', {
         categories: [],
         products: [],
     }),
+    getters: {
+        getCategoriesByGroup: (state) => {
+            return (groupName) => state.categories.filter((category) => category.group === groupName);
+        },
+        getProductsByGroup: (state) => {
+            return (groupName) => state.products.filter((product) => product.group === groupName);
+        },
+        getProductsByCategory: (state) => {
+            return (categoryName) => state.products.filter((product) => product.category === categoryName);
+        },
+        getPopularProducts: (state) => {
+            return state.products.filter((product) => product.countSold > 10);
+        },
+    },
     actions: {
         async fetchGroups() {
             try {

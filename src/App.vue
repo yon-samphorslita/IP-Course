@@ -10,12 +10,18 @@ import { useProductStore } from './stores/productStore';
 import ProductCategories from './components/ProductCategories.vue';
 import PromotionBanners from './components/PromotionBanners.vue';
 import { computed, onMounted } from 'vue';
+import { mapState } from 'pinia';
 
     export default {
         name: 'App',
         components: {
             ProductCategories,
             PromotionBanners
+        },
+        data() {
+          return {
+            currentGroupName: 'Group A',
+          };
         },
         setup() {
           const productStore = useProductStore();
@@ -30,10 +36,12 @@ import { computed, onMounted } from 'vue';
 
           const categories = computed(() => productStore.categories);
           const promotions = computed(() => productStore.promotions);
+          const popularProducts = computed(() => productStore.getPopularProducts());
 
           return {
             categories,
             promotions,
+            popularProducts,
           };
         },
       };
