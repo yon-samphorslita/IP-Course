@@ -3,7 +3,7 @@
         <div v-for="category in categories" :key="category.name" class="category-item" :style="{ backgroundColor: category.color}">
             <img :src="getImagePath(category.image)" :alt="category.name" />
             <p>{{ category.name }}</p>
-            <span>{{ category.items }} items</span>
+            <span>{{ category.productCount }} items</span>
         </div> 
     </div>
 </template>

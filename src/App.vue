@@ -1,14 +1,15 @@
 <template>
   <div id="app">
     <ProductCategories :categories = "categories" />
-    <PromotionBanners :banners = "banners" />
+    <PromotionBanners :banners = "promotions" />
   </div>
 </template>
 
 <script>
-  import ProductCategories from './components/ProductCategories.vue';
-  import PromotionBanners from './components/PromotionBanners.vue';
-  import axios from 'axios';
+import { useProductStore } from './stores/productStore';
+import ProductCategories from './components/ProductCategories.vue';
+import PromotionBanners from './components/PromotionBanners.vue';
+import { computed, onMounted } from 'vue';
 
     export default {
         name: 'App',
@@ -16,39 +17,26 @@
             ProductCategories,
             PromotionBanners
         },
+        setup() {
+          const productStore = useProductStore();
 
-        data() {
-            return {
-                categories:  [],
-                banners: []
-            };
+          onMounted(async () => {
+            try {
+            await productStore.initializeData();
+            } catch (error) {
+              console.error(error);
+            }
+          });
+
+          const categories = computed(() => productStore.categories);
+          const promotions = computed(() => productStore.promotions);
+
+          return {
+            categories,
+            promotions,
+          };
         },
-
-    methods: {
-      async fetchCategories() {
-        try {
-          const response = await axios.get('http://localhost:3000/api/categories');
-          this.categories = response.data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async fetchBanners() {
-      try {
-        const response = await axios.get('http://localhost:3000/api/promotions');
-        this.banners = response.data;
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    },
-
-    mounted() {
-      this.fetchCategories();
-      this.fetchBanners();
-    }
-  };
-
+      };
 </script>
 
 <style scoped>
