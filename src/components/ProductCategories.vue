@@ -40,9 +40,11 @@ export default {
     height: 185px;
     padding: 10px;
     border-radius: 8px;
-    background-color: #f5f5f5;
 }
-
+.category-item:hover {
+    box-shadow: 0 0 5px gray;
+    border: #d3767e 1px solid;
+}
 img {
     width: 100px;
     height: 100px;
@@ -51,7 +53,6 @@ img {
 }
 
 p {
-    font-family:Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: #293b3f;
 }

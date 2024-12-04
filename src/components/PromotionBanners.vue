@@ -49,7 +49,6 @@ export default {
     align-items: center;
     padding: 20px;
     border-radius: 10px;
-    background-color: #f0f0f0;
     width: 512px;
     height: 300px;
 }
@@ -69,8 +68,6 @@ img {
 p {
     font-size: x-large;
     font-weight: bold;
-    font-family:Arial, Helvetica, sans-serif;
-    color: #293b3f;
 }
 
 </style>
