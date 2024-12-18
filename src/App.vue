@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { RouterView} from 'vue-router';
+import { RouterView } from 'vue-router';
 console.log('App mounted');
 </script>
 
 <template>
-  <div id="app">
+  <div>
     <RouterView />
   </div>
 </template>

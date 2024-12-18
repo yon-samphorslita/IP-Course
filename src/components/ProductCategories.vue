@@ -1,10 +1,15 @@
 <template>
     <div class="product-categories">
-        <div v-for="category in categories" :key="category.name" class="category-item" :style="{ backgroundColor: category.color}">
+        <router-link 
+        :to="{ name: 'CategoryPage', 
+        params: { name: category.name },
+        state: { color: category.color} }"
+        v-for="category in categories" :key="category.name" 
+        class="category-item" :style="{ backgroundColor: category.color}">
             <img :src="getImagePath(category.image)" :alt="category.name" />
             <p>{{ category.name }}</p>
             <span>{{ category.productCount }} items</span>
-        </div> 
+        </router-link> 
     </div>
 </template>
 
@@ -61,5 +66,7 @@ p {
 span {
     color: gray;
 }
-
+a {
+    text-decoration: none;
+}
 </style>

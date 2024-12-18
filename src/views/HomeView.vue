@@ -1,10 +1,13 @@
 <template class="App">
   <div id="app">
+    <Header />
+    <deal />
     <AppHeader title="Featured Categories" :nav="groups" />
     <ProductCategories class="product" :categories = "categories" />
-    <PromotionBanners class="promotion" :banners = "promotions" />
+    <PromotionBanners class="promotion" :promotions = "promotions" />
     <AppHeader title="Popular Products" :nav="groups" />
     <Product class="products" :products="products"/>
+    <router-link />
   </div>
 </template>
 
@@ -14,16 +17,20 @@ import ProductCategories from '@/components/ProductCategories.vue';
 import PromotionBanners from '@/components/PromotionBanners.vue';
 import AppHeader from '@/components/menu.vue';
 import Product from '@/components/Products.vue';
+import Header from '@/components/Header.vue';
 import { computed, onMounted } from 'vue';
 import { mapState } from 'pinia';
+import Deal from '@/components/showCase.vue';
 
     export default {
-      name: 'App',
+      name: 'HomeView',
       components: {
         AppHeader,
         ProductCategories,
         PromotionBanners, 
         Product,
+        Header,
+        Deal
       },
       data() {
         return {
@@ -50,12 +57,12 @@ import { mapState } from 'pinia';
         setup() {
           const productStore = useProductStore();
 
-          onMounted(); {
+          onMounted(() => {
             productStore.fetchCategories();
             productStore.fetchGroups();
             productStore.fetchProducts();
             productStore.fetchPromotions();
-          };
+          });
 
           const groups = computed(() => productStore.groups);
           const categories = computed(() => productStore.categories);
@@ -75,11 +82,12 @@ import { mapState } from 'pinia';
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Dosis|Quicksand');
 #app {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Quicksand;
   left: 0;
   right: 0;
   margin: 0;
@@ -87,6 +95,9 @@ import { mapState } from 'pinia';
 }
 template {
   padding: 0px;
+  margin: 0;
+}
+body {
   margin: 0;
 }
 </style>

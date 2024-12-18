@@ -44,7 +44,6 @@ export default {
 </script>
 <style >
 .app-header {
-  position: relative;
   display: flex;
   flex-direction: column;
 }
