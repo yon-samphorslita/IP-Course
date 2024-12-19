@@ -1,13 +1,28 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router';
-console.log('App mounted');
+<script>
+import { RouterLink, RouterView } from 'vue-router'
+import Header from './components/header.vue';
+import Footer from './components/footer.vue';
+import Menu from './components/menu.vue';
+import page from './views/page.vue';
+export default {
+  components: { 
+    Header ,
+    Menu,
+    page,
+    Footer
+  }
+}
 </script>
 
 <template>
-  <div>
-    <RouterView />
-  </div>
+  <Header />
+  <Menu />
+  <page/>
+  <Footer/>
 </template>
 
-<style scoped>
+<style >
+body {
+  margin: 0;
+}
 </style>

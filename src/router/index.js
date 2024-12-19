@@ -1,27 +1,29 @@
-import HomeView from '@/views/HomeView.vue';
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-  },
-  {
-    path: '/CategoryPage/:name',
-    name: 'CategoryPage',
-    component: () => import('@/components/CategoryPage.vue'), // Correct quotes
-    props: true
-  },
-  {
-  path: '/ProductPage/:name',
-  name: 'productPage',
-  component: () => import('@/components/ProductPage.vue'),
-  props: true
-}
-]
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      children: [
+        {
+          path: 'page/:pageNumber',
+          component:  () => import('../views/page.vue'),
+          name: 'page',
+          children: [
+            {
+              path: 'section/:id',
+              name: 'section',
+              component: () => import('../views/section.vue'),
+            }
+          ]
+        }
+      ]
+    },
+    {
+    },
+  ],
 })
+
 export default router

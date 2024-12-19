@@ -1,71 +1,39 @@
 <template>
-    <header class="app-header">
-        <nav>
-            <ul>
-                <li class="feature"> {{ title }}</li>
-                <button>All</button>
-                <button v-for="(item, index) in nav" :key="index">{{ item }}</button>
-              </ul>
-        </nav>
-    </header>
+    <div class="menu">Menu
+        <ul>
+            <li class="section1">Section 1</li>
+            <li class="section2">Section 2</li>
+            <li class="section3">Section 3</li>
+            <li class="section4">Section 4</li>
+        </ul>
+    </div>
 </template>
 <script>
-import { useProductStore } from '@/stores/productStore';
-import { onMounted } from 'vue';
-
-
 export default {
-    name: 'AppHeader',
-
-    props: {
-      title: {
-        type: String, 
-        Required: true
-      },
-      nav: {
-        type: Array,
-        Required: true
-      }
-    },
-    
-    setup() {
-      const productStore = useProductStore();
-
-      // Fetch groups when the component is mounted
-      onMounted(() => {
-          productStore.fetchGroups();
-      });
-
-      return {
-          productStore
-      };
-    }
+    name: 'Menu',
 }
 </script>
-<style >
-.app-header {
-  display: flex;
-  flex-direction: column;
+<style scoped>
+.menu {
+    background-color: #a13f3f;
+    display: flex;
+    padding: 10px;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
 }
 ul {
-  list-style: none;
-  display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
-button {
-  border: none;
-  background-color: white;
-  text-decoration: none;
-  color: #0c3548;
-  margin-right: 20px;
-  font-size: 16px;
+li {
+    list-style: none;
 }
-.feature {
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: auto;
-}
-button:hover {
-  font-weight: bold;
-  animation: linear;
+.section1, .section2, .section3, .section4 {
+    background-color: #793667;
+    border: 1px solid black;
+    padding: 10px;
 }
 </style>
