@@ -13,12 +13,13 @@ export default {
 <style scoped>
 .footer {
     display: flex;
-    background-color: green;
+    background-color: black;
     padding: 10px 30px;
     align-items: center;
     justify-content: center;
     position: fixed;
     bottom: 0;
     width: 100%;
+    color: white;
 }
 </style>

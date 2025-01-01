@@ -28,7 +28,7 @@
   <style scoped>
   .header {
     display: flex;
-    background-color: blueviolet;
+    background-color: black;
     padding: 10px 30px;
     align-items: center;
     color: white;
